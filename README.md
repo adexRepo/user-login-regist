@@ -1,4 +1,5 @@
-# spring-boot-user-login
+# Spring-boot-user-login
+- Registration
 - Login
 - Logout
 - Email Verify
