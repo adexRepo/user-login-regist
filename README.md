@@ -1,7 +1,6 @@
-# Spring-boot-user-login
+# User-login-regist
 - Registration
 - Login
-- Logout
 - Email Verify
 
 # Stack
