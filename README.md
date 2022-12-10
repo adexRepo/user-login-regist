@@ -3,7 +3,15 @@
 - Logout
 - Email Verify
 
-#Stack
+# Stack
 - Springboot 3.0.0
 - Maven
 - Java 17
+
+# Dependencies
+- Lombok
+- Spring Web
+- Spring Security
+- PostgreSQL Driver
+- Spring Data JPA
+- Java Mail Sender
