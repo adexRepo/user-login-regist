@@ -31,6 +31,6 @@ public class RegistrationService {
                 AppUserRole.USER,
                 false,true
             )
-         );
+        );
     }
 }

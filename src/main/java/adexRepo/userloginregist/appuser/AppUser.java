@@ -32,7 +32,8 @@ public class AppUser implements UserDetails{
         allocationSize = 1
     )
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+    @GeneratedValue(
+        strategy = GenerationType.SEQUENCE,
         generator = "student_sequence"
     
     )
