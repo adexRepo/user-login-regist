@@ -7,6 +7,7 @@
 - Springboot 3.0.0
 - Maven
 - Java 17
+- Yaml
 
 # Dependencies
 - Lombok
@@ -15,3 +16,6 @@
 - PostgreSQL Driver
 - Spring Data JPA
 - Java Mail Sender
+- Spring Boot DevTools
+- hibernate-core
+- etc
