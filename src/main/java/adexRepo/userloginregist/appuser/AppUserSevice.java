@@ -1,6 +1,7 @@
 package adexRepo.userloginregist.appuser;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.security.core.userdetails.UserDetails;
@@ -52,6 +53,14 @@ public class AppUserSevice implements UserDetailsService {
 
         confirmationTokenService.saveConfirmationToken(confirmationToken);
         return token;
+    }
+
+
+    public void enableAppUser(String email){
+        Optional<AppUser>  user = appRepository.findByEmail(email);
+
+        user.get().setEnabled(true);
+        appRepository.save(user.get());
     }
 
 }
