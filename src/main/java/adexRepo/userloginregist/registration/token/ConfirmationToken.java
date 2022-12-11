@@ -40,6 +40,9 @@ public class ConfirmationToken {
     private LocalDateTime createAt;
     @Column(nullable = false)
     private LocalDateTime expiresAt;
+
+    private LocalDateTime confirmedAt;
+    
     @ManyToOne
     @JoinColumn(
         nullable = false,

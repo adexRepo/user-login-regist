@@ -10,7 +10,6 @@ public class EmailValidator implements Predicate<String>{
 
     @Override
     public boolean test(String arg0) {
-        // ANCHOR: Regex checker
 
         return true;
     }
