@@ -25,7 +25,7 @@ public class EmailService implements EmailSender{
     public void send(String toEmail,String subject, String body) {
         try {
             SimpleMailMessage msg = new SimpleMailMessage();
-            msg.setFrom("aeitiao@gmail.com");
+            msg.setFrom("your@gmail.com");
             msg.setTo(toEmail);
             msg.setSubject(subject);
             msg.setText(body);
