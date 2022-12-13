@@ -1,40 +1,41 @@
 package adexRepo.userloginregist.email;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Service;
+
 import lombok.AllArgsConstructor;
 
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Component;
-
-@Component
+@Service
 @AllArgsConstructor
-public class EmailService {
-    private final static String EMAIL_CONFIRMATION_SUBJECT = "Confirm your udeesa account";
+public class EmailService implements EmailSender{
 
-    private JavaMailSender javaMailSender;
+    private final static Logger LOGGER = LoggerFactory
+            .getLogger(EmailService.class);
 
-    public void sendConfirmationEmail(String token, String email) {
-        // build email
-        // send message
-        String message = "Welcome to Udeesa, test token" + token;
-        String from = "no-reply@udeesa.org";
-        send(email, from, message);
-    }
+    @Autowired
+    private final JavaMailSender mailSender;
 
+    @Override
     @Async
-    private void send(String to, String from, String email) {
+    public void send(String toEmail,String subject, String body) {
         try {
-            jakarta.mail.internet.MimeMessage mimeMessage = javaMailSender.createMimeMessage();
-            MimeMessageHelper helper =
-                    new MimeMessageHelper(mimeMessage, "utf-8");
-            helper.setFrom(from);
-            helper.setTo(to);
-            helper.setSubject(EMAIL_CONFIRMATION_SUBJECT);
-            helper.setText(email);
-            javaMailSender.send(mimeMessage);
-        } catch (jakarta.mail.MessagingException e) {
-            throw new IllegalStateException("failed to send email");
+            SimpleMailMessage msg = new SimpleMailMessage();
+            msg.setFrom("aeitiao@gmail.com");
+            msg.setTo(toEmail);
+            msg.setSubject(subject);
+            msg.setText(body);
+    
+            mailSender.send(msg);
+            
+            LOGGER.info("Email Successfully!");
+        } catch (Exception e) {
+            LOGGER.error("Email Errorfully");
+            throw new IllegalStateException("Error Guys!",e);
         }
     }
 }

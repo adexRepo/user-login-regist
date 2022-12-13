@@ -15,3 +15,11 @@
 - PostgreSQL Driver
 - Spring Data JPA
 - Java Mail Sender
+
+# test
+- browser -> manage google account
+- security -> add password
+- other -> create -> copy code
+- put that code to application.yml-mail = password
+- put also your email in application.yml-mail = username
+- done!

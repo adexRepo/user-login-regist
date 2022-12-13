@@ -2,6 +2,8 @@ package adexRepo.userloginregist.registration;
 
 import java.time.LocalDateTime;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,7 +24,7 @@ public class RegistrationService {
     private ConfirmationTokenService confirmationTokenService;
     private final EmailSender emailSender;
 
-
+    @EventListener(SpringApplication.class)
     public String register(RegistrationRequest request){
 
         boolean isValidEmail = emailValidator.test(request.getEmail());
@@ -43,7 +45,7 @@ public class RegistrationService {
         );
 
         String link = "http://localhost:8080/api/v1/registration/confirm?token=" + token;
-        emailSender.send(request.getEmail(),buildEmail(request.getFirstName(), link));
+        emailSender.send(request.getEmail(),"Testing aja!",buildEmail(request.getFirstName(), link));
         
         return token;
     }
