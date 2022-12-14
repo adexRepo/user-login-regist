@@ -1,5 +1,6 @@
 package adexRepo.userloginregist.email;
 
 public interface EmailSender {
-    void send(String toEmail,String subject, String body);
+    void sendSimple(String toEmail,String subject, String body);
+    void sendMimeMsg(String to,String email);
 }
